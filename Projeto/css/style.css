@@ -1,0 +1,12 @@
+@import "./base/reset.css";
+@import "./base/typographic.css";
+@import "./layout/footer.css";
+@import "./layout/header.css";
+@import "./layout/main.css";
+@import "./layout/navigation.css";
+@import "./layout/sidebar.css";
+@import "./pages/Aulas.css";
+@import "./pages/Home.css";
+@import "./pages/Professora.css";
+@import "./pages/Projetos.css";
+@import "./components/menu.css";

@@ -1,0 +1,31 @@
+.Top_Menu nav{
+    padding-bottom: 5px;
+    position: fixed;
+    left: 25%;
+    top: 60px;
+	width: 750px;
+	height: 45px;
+	background-color: #e0542a;
+	border-radius: 8px;
+	font-size: 0;
+}
+.Top_Menu nav a {
+    line-height: 50px;
+	height: 100%;
+	font-size: 15px;
+	display: inline-block;
+	position: relative;
+    padding-right: 45px;
+	z-index: 1;
+	text-decoration: none;
+	text-transform: uppercase;
+	text-align: center;
+	color: white;
+	cursor: pointer;
+} 
+
+
+.Left_Menu a
+{
+    color: #FFFF;
+}
