@@ -1,0 +1,12 @@
+.Left_Menu {
+    width: 20%;
+    height: 100%;
+    background-color: #fe676e;
+    position: fixed;
+    top:10%;
+    left: 0%;
+    color: rgb(255, 255, 255); 
+    text-align: center;
+    font-family: cursive;
+    font-size: medium;    
+  }
