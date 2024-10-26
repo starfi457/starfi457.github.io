@@ -2,7 +2,7 @@
 $(function(){
 
     // criar sua função para carregar as receitas.
-$.getJSON('./atividade03/receitas.json', function (data) {
+$.getJSON('./receitas.json', function (data) {
             displayJSON(data);
         });
 
