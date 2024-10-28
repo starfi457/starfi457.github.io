@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="script/wish.js" defer></script>
+    <title>Controle de despesas</title>
+  </head>
+  <body>
+    <div class="container">
+      <nav>
+          <h3> Modulos</h3>
+          <ul>
+              <li><a href="index.html">Transações</a></li>
+              <li><a href="report.html">Relatório</a></li>
+          </ul>
+      </nav>
+      <div class="content">    
+        <div class="container2">
+          <h2>Lista de Desejos</h2>
+    
+          <h3>Desejos</h3>
+          <div id="boxTransactions" class="scroll">
+              <ul id="transactions" class="transactions">
+                <!-- <li class="minus">
+                  Salário <span>-$400</span><button class="delete-btn">x</button>
+                </li> -->
+              </ul>
+          </div> 
+          <h3>Adicionar desejo</h3>
+          
+        <!--  <form id="form"> -->
+            <div class="form-control">
+              <label for="date">Data: </label>
+              <input autofocus type="date" id="wish-date" placeholder="Previsão" />
+            </div>
+            <div class="form-control">
+              <label for="text">Nome: </label>
+              <input autofocus type="text" id="wish-name" placeholder="Desejo" />
+            </div>
+    
+            <div class="form-control">
+              <label for="amount">Valor:</label>
+              <input type="number" id="amount" placeholder="Valor do desejo" />
+            </div>    
+            <button class="btn">Adicionar</button>    
+      </div>
+      <footer></footer>
+      </div>    
+    </div>   
+  </body>
+</html>

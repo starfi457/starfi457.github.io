@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="script/report.js" defer></script>
+    <title>Controle de despesas</title>
+  </head>
+  <body>
+    <div class="container">
+      <nav>
+          <h3> Modulos</h3>
+          <ul>
+              <li><a href="index.html">Transações</a></li>
+              <li><a href="wish.html">Desejos</a></li>
+          </ul>
+      </nav>
+      <div class="content">    
+        <div class="container2">
+          <h2>Resultado do Período</h2>
+          <div class="form-control">
+            <label for="date">Início: </label>
+            <input autofocus type="date" id="report-date1" placeholder="Data final da pesquisa" />
+          </div>
+          <div class="form-control">
+            <label for="date">Fim:&nbsp;&nbsp;&nbsp; </label>
+            <input autofocus type="date" id="report-date2" placeholder="Data final da pesquisa" />
+          </div>      
+          <button class="btn">Pesquisar</button>               
+          <h4>Saldo</h4>
+          
+          <h1 id="balance" class="balance">R$ 0.00</h1>
+          <h4>Detalhamento</h4>    
+          <h3>Receitas</h4>
+            <div id="boxTransactions" class="scroll">
+              <ul id="receitas" class="transactions">
+                <!-- <li class="minus">
+                  Salário <span>-$400</span><button class="delete-btn">x</button>
+                </li> -->
+              </ul>
+          </div> 
+          <h4>Despesas</h4>
+          <div id="boxTransactions" class="scroll">
+            <ul id="despesas" class="transactions">
+              <!-- <li class="minus">
+                Salário <span>-$400</span><button class="delete-btn">x</button>
+              </li> -->
+            </ul>
+        </div> 
+      </div>
+      <footer></footer>
+      </div>    
+    </div>   
+  </body>
+</html>

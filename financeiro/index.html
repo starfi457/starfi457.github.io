@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="script/controle.js" defer></script>
+    <title>Controle de despesas</title>
+  </head>
+  <body>
+    <div class="container">
+      <nav>
+          <h3> Modulos</h3>
+          <ul>
+              <li><a href="report.html">Relatório</a></li>
+              <li><a href="wish.html">Desejos</a></li>
+          </ul>
+      </nav>
+      <div class="content">    
+        <div class="container2">
+          <h2>Controle de despesas</h2>
+          <h3>Saldo atual</h3>
+          
+          <h1 id="balance" class="balance">R$ 0.00</h1>
+    
+          <div class="inc-exp-container">
+            <div>
+              <h4>Receitas</h4>
+              <p id="money-plus" class="money plus">+ R$0.00</p>
+            </div>
+    
+            <div>
+              <h4>Despesas</h4>
+              <p id="money-minus" class="money minus">- R$0.00</p>
+            </div>
+          </div>
+    
+          <h3>Transações</h3>
+          <div id="boxTransactions" class="scroll">
+              <ul id="transactions" class="transactions">
+                <!-- <li class="minus">
+                  Salário <span>-$400</span><button class="delete-btn">x</button>
+                </li> -->
+              </ul>
+          </div> 
+          <h3>Adicionar transação</h3>
+          
+        <!--  <form id="form"> -->
+            <div class="form-control">
+              <label for="transaction-date">Data:&nbsp;&nbsp; </label>
+              <input autofocus type="date" id="transaction-date" placeholder="Data da transação" />
+            </div>
+            <div class="form-control">
+              <label for="transaction-name">Nome:&nbsp; </label>
+              <input autofocus type="text" id="transaction-name" placeholder="Nome da transação" />
+            </div>
+    
+            <div class="form-control">
+              <!--<small>(negativo - despesas, positivo - receitas)</small> -->
+              <label for="amount">Valor:&nbsp; </label>
+              <input type="number" id="amount" placeholder="Valor da transação" />
+            </div>
+    
+            <div class="form-control">
+              <label for="category">Categoria <br />
+                <small>Classe de Despesa / Receita</small>
+              </label>
+              <input list="category-list" class="list" id="category" placeholder="Escolha uma Categoria" />
+    
+              <datalist id="category-list"></datalist>
+    
+            </div>
+    
+            <button class="btn">Adicionar</button>    
+      </div>
+      <footer></footer>
+      </div>    
+    </div>   
+  </body>
+</html>
