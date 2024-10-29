@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script/report.js" defer></script>
+    <title>Relatório de Transações</title>
+  </head>
+  <body>
+    <div class="container">
+      <nav>
+          <h3> Modulos</h3>
+          <ul>
+              <li><a href="index.html">Transações</a></li>
+              <li><a href="wish.html">Desejos</a></li>
+          </ul>
+      </nav>
+      <div class="content">    
+        <div class="container3">
+          <h2>Resultado do Período</h2>
+          <div class="form-control">
+            <label for="report-date1">Início: </label>
+            <input class="dataPesquisa" autofocus type="date" id="report-date1" placeholder="Data final da pesquisa" />
+            <label for="report-date2">&nbsp;&nbsp;&nbsp;Fim: </label>
+            <input class="dataPesquisa" autofocus type="date" id="report-date2" placeholder="Data final da pesquisa" />
+            <button class="btn2">Pesquisar</button>     
+          </div>
+          <div class="row">
+            <canvas id="CReceita" style="width:50%;max-width:300px"></canvas>
+            <canvas id="CDespesa" style="width:50%;max-width:300px"></canvas> 
+          </div>
+          <div class="row">  
+            <canvas id="CSaldo" style="width:100%;max-width:600px"></canvas>
+          </div>          
+          <h4>Saldo</h4>
+          <h1 id="balance" class="balance">R$ 0.00</h1>
+          <h4>Detalhamento</h4>    
+          <h3>Receitas</h4>
+            <div id="boxTransactions" class="scroll2">
+              <ul id="receitas" class="transactions">
+                <!-- <li class="minus">
+                  Salário <span>-$400</span><button class="delete-btn">x</button>
+                </li> -->
+              </ul>
+          </div> 
+          <h3>Despesas</h3>
+          <div id="boxTransactions" class="scroll2">
+            <ul id="despesas" class="transactions">
+              <!-- <li class="minus">
+                Salário <span>-$400</span><button class="delete-btn">x</button>
+              </li> -->
+            </ul>
+        </div> 
+      </div>
+      <footer></footer>
+      </div>    
+    </div>   
+  </body>
+</html>
