@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laboratório Classes</title>
+    <link rel="stylesheet" href="./css/estilo.css">
+    <link rel="stylesheet" href="./css/estilo2.css">
+    <script src="./js/atividade05.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        <nav>
+            <h3> Atividades</h3>
+            <ul>
+                <li><a href="atividade01.html">1. Classe Pessoa e Herança</a></li>
+                <li><a href="atividade02.html">2. Classe ContaBancaria</a></li>
+                <li><a href="atividade03.html">3. Sistema de Gerenciamento de Produtos</a></li>
+                <li><a href="atividade04.html">4. Classe Veiculo</a></li>
+                <li><a href="atividade05.html">5. Classe de Gerenciamento de Funcionários</a></li>
+                <li><a href="atividade06.html">6. Sistema de Biblioteca</a></li>
+                <li><a href="atividade07.html">7. Classe Jogador para Jogos Online</a></li>
+                <li><a href="atividade08.html">8. Classe Turma e Alunos</a></li>
+                <li><a href="atividade09.html">9. Classe para Gerenciar Tarefas</a></li>
+                <li><a href="atividade10.html">10. Classe para Controle de Estacionamento</a></li>
+            </ul>
+        </nav>
+        <div class="content">
+            <h1>6. Sistema de Biblioteca</h1>
+            <p>
+                •	Problema: Crie uma classe Livro com os atributos:
+                o	titulo (string),
+                o	autor (string),
+                o	disponivel (boolean).
+                Adicione métodos:
+                o	emprestar(): altera disponivel para false.
+                o	devolver(): altera disponivel para true.
+                o	status(): exibe o título e se está disponível ou emprestado.
+                •	Extra:
+                o	Crie uma classe Biblioteca que gerencie uma coleção de livros.
+                o	Adicione métodos para listar os livros disponíveis e buscar um livro pelo título.
+            </p>
+            <fieldset>
+				<legend>Cadastro de Pessoa</legend>
+				<label>Titulo</label>
+				<input type="text" id="nome" placeholder="Digite o seu nome"> <br>
+				<label>Autor</label>
+				<input type="text"   id="autor" placeholder="Digite o autor"></input> <br>
+				<button id="adicionar" onclick="show()">Adicionar</button>
+                <button id="emprestar" onclick="emprestar()">Emprestar</button>
+                <button id="devolver"  onclick="devolver()">Devolver</button>
+                <button id="status"    onclick="status()">Status</button>
+				<button id="excluir" onclick="clean()">Limpar</button>
+			</fieldset>
+        </div>
+        <footer></footer>
+    </div>
+
+</body>
+</html>
+
+

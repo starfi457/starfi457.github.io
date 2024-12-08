@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laboratório Classes</title>
+    <link rel="stylesheet" href="./css/estilo.css">
+    <link rel="stylesheet" href="./css/estilo2.css">
+    <script src="./js/atividade01.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        <nav>
+            <h3> Atividades</h3>
+            <ul>
+                <li><a href="atividade01.html">1. Classe Pessoa e Herança</a></li>
+                <li><a href="atividade02.html">2. Classe ContaBancaria</a></li>
+                <li><a href="atividade03.html">3. Sistema de Gerenciamento de Produtos</a></li>
+                <li><a href="atividade04.html">4. Classe Veiculo</a></li>
+                <li><a href="atividade05.html">5. Classe de Gerenciamento de Funcionários</a></li>
+                <li><a href="atividade06.html">6. Sistema de Biblioteca</a></li>
+                <li><a href="atividade07.html">7. Classe Jogador para Jogos Online</a></li>
+                <li><a href="atividade08.html">8. Classe Turma e Alunos</a></li>
+                <li><a href="atividade09.html">9. Classe para Gerenciar Tarefas</a></li>
+                <li><a href="atividade10.html">10. Classe para Controle de Estacionamento</a></li>
+            </ul>
+        </nav>
+        <div class="content">
+            <h1>1. Classe Pessoa e Herança</h1>
+            <p>
+                •	Problema: Crie uma classe Pessoa com os seguintes atributos:
+                o	nome (string),
+                o	idade (número),
+                o	sexo (string).
+                Adicione métodos:
+                o	apresentar(): retorna uma string com as informações formatadas, como "Olá, meu nome é João, tenho 25 anos e sou homem".
+                •	Crie uma classe Aluno que herde de Pessoa e adicione:
+                o	matricula (número),
+                o	curso (string).
+                O método apresentar() deve incluir informações sobre o curso.
+                •	Extra: Crie uma instância de Aluno e invoque o método apresentar().
+            </p>
+            <fieldset>
+				<legend>Cadastro de Pessoa</legend>
+				<label>Nome</label>
+				<input type="text" id="nome" placeholder="Digite o seu nome"> <br>
+				<label>Idade</label>
+				<input type="number"   id="idade" placeholder="Digite a sua idade"></input> <br>
+                <label>Sexo</label>
+                <select id='sexo'   placeholder="Selecione o sexo"  required>
+                    <option></option>
+                    <option value='Feminino' >Feminino</option>
+                    <option value='Masculino' >Masculino</option>
+                </select> <br>
+				<label>Matricula</label>
+				<input type="number" id="matricula" placeholder="Digite a sua matricula"> <br>
+				<label>Curso</label>
+				<input type="text" id="curso" placeholder="Digite o seu curso">
+				<br>
+				<button id="adicionar" onclick="show()">Adicionar</button>
+				<button id="excluir" onclick="clean()">Limpar</button>
+			</fieldset>
+            <p>Resultado</p>
+            <p id="resultado"></p>
+        </div>
+        <footer></footer>
+    </div>
+
+</body>
+</html>
+
+

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laboratório Classes</title>
+    <link rel="stylesheet" href="./css/estilo.css">
+    <link rel="stylesheet" href="./css/estilo2.css">
+    <script src="./js/atividade02.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        <nav>
+            <h3> Atividades</h3>
+            <ul>
+                <li><a href="atividade01.html">1. Classe Pessoa e Herança</a></li>
+                <li><a href="atividade02.html">2. Classe ContaBancaria</a></li>
+                <li><a href="atividade03.html">3. Sistema de Gerenciamento de Produtos</a></li>
+                <li><a href="atividade04.html">4. Classe Veiculo</a></li>
+                <li><a href="atividade05.html">5. Classe de Gerenciamento de Funcionários</a></li>
+                <li><a href="atividade06.html">6. Sistema de Biblioteca</a></li>
+                <li><a href="atividade07.html">7. Classe Jogador para Jogos Online</a></li>
+                <li><a href="atividade08.html">8. Classe Turma e Alunos</a></li>
+                <li><a href="atividade09.html">9. Classe para Gerenciar Tarefas</a></li>
+                <li><a href="atividade10.html">10. Classe para Controle de Estacionamento</a></li>
+            </ul>
+        </nav>
+        <div class="content">
+            <h1>2. Classe ContaBancaria</h1>
+            <p>
+                •	Problema: Crie uma classe ContaBancaria com os seguintes atributos:
+                o	titular (string),
+                o	saldo (número).
+                Adicione os métodos:
+                o	depositar(valor): aumenta o saldo.
+                o	sacar(valor): diminui o saldo se houver saldo suficiente; caso contrário, exiba uma mensagem de erro.
+                o	mostrarSaldo(): exibe o saldo atual.
+                •	Extra:
+                o	Crie uma classe ContaCorrente que herde de ContaBancaria e adicione um atributo limite (número).
+                o	Modifique o método sacar() para permitir saque até o valor do limite.
+            </p>
+            <fieldset>
+				<legend>Cadastro Conta Bancaria</legend>
+				<label>Titular</label>
+				<input type="text" id="nome" placeholder="Digite o seu nome"> <br>
+				<label>Saldo</label>
+				<input type="number"   id="saldo" placeholder="Digite o seu saldo"></input> <br>
+				<label>Limite</label>
+				<input type="number" id="limite" placeholder="Digite o seu limite"> <br>
+				<label>Valor</label>
+				<input type="number" id="valor" placeholder="Digite o valor">
+				<br>
+				<button id="Cadastrar" onclick="cadastrar()">Cadastrar</button>
+				<button id="Depositar" onclick="depositar()">Depositar</button>
+				<button id="Sacar" onclick="sacar()">Sacar</button>
+				<button id="excluir" onclick="clean()">Limpar</button>
+			</fieldset>
+            <p>Resultado</p>
+            <p id="resultado"></p>            
+        </div>
+        <footer></footer>
+    </div>
+
+</body>
+</html>
+
+
