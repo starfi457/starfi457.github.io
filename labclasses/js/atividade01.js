@@ -1,11 +1,11 @@
-class Veiculo {
-    constructor(marca, modelo,ano) {
-      this.marca = marca;
-      this.modelo = modelo;
-      this.ano = ano ;
+class Pessoa {
+    constructor(nome, idade,sexo) {
+      this.nome = nome;
+      this.idade = idade;
+      this.sexo = sexo ;
     }
-    descrever() {
-      const mensagem = "Marca: "+ this.marca +", Modelo: "+ this.modelo +" , Ano:  "+this.ano
+    apresentar() {
+      const mensagem = "Olá, meu nome é "+ this.nome +", tenho "+ this.idade +" anos e sou "+this.sexo
       return mensagem;
     }
   }
