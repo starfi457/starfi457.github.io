@@ -9,20 +9,20 @@ class Produto {
       return mensagem;
     }
     atualizarEstoque(valor){
-        this.saldo = this.saldo + valor
+        if(valor<0){
+        if( this.quantidadeEmEstoque + valor<0){
+          return -1
+        }}
+        this.quantidadeEmEstoque = this.quantidadeEmEstoque + valor
         return 0
     }
-    sacar(valor){
-        if (this.saldo>=valor){this.saldo = this.saldo - valor}
-        else {return -1}
-        return 0
-    }
+   
+    
     calcularValorEstoque(){
-        this.produtos = this.quantidadeEmEstoque * this.preco
-        return 0
+        return this.quantidadeEmEstoque * this.preco
     }
   }
-  let d = new Date();
+ 
 
   class ProdutoPerecivel extends Produto {
     constructor(nome,preco,quantidadeEmEstoque,dataDeValidade) {
@@ -39,7 +39,7 @@ class Produto {
     }
 } 
 
-var Conta
+var Estoque
 
 function clean() {
     document.querySelector("#nome").value = ""
@@ -51,30 +51,43 @@ function clean() {
 function cadastrar() {
     let val_nome=document.querySelector("#nome").value
     let val_preco=parseFloat (document.querySelector("#preco").value)
-    let val_quantidade=document.querySelector("#quantidadeEmEstoque").value
-    let val_datadevalidade=document.querySelector("#dataDeValidade")
+    let val_quantidade=parseFloat(document.querySelector("#quantidadeEmEstoque").value)
+    let val_auxData=(document.querySelector("#dataDeValidade").value).split('-')
+    var val_datadevalidade = new Date(val_auxData[0], val_auxData[1] - 1, val_auxData[2]);
     const Ze = new ProdutoPerecivel(val_nome,val_preco,val_quantidade,val_datadevalidade)
-    Conta = Ze
+    Estoque = Ze
     const resultado = document.querySelector("#resultado")
     resultado.innerHTML=Ze.mostrarProduto()
 }
-function depositar(){
-    let val_valor=parseFloat(document.querySelector("#valor").value)
-     if (Conta !=undefined ){
-        Conta.depositar(val_valor)
+
+function atualizarEstoque(){
+    let val_valor=parseFloat(document.querySelector("#atualizaçãoDoestoque").value)
+     if ( Estoque!=undefined ){
+        if(Estoque.atualizarEstoque(val_valor)==-1){
+            alert("Estoque Insuficiente")
+        }
         const resultado = document.querySelector("#resultado")
-        resultado.innerHTML= Conta.mostrarSaldo()
+        resultado.innerHTML= Estoque.mostrarProduto()
     }
-    else{alert("Titular não cadastrado")}
+    else{alert("Produto não cadastrado")}
     
 }
-function sacar(){
-    let val_valor=parseFloat(document.querySelector("#valor").value)
-    if (Conta != undefined){
-         let teste= Conta.sacar(val_valor)
-         if(teste==-1){alert("Saldo insuficiente")}
-        const resultado = document.querySelector("#resultado")
-        resultado.innerHTML= Conta.mostrarSaldo()
+
+    function calcularValorEstoque(){
+        if ( Estoque!=undefined ){ const resultado = document.querySelector("#resultado")
+        resultado.innerHTML= Estoque.mostrarProduto() + "<br/> O valor total do estoque é R$ "+Estoque.calcularValorEstoque()
     }
-    else{alert("Titular não cadastrado")}  
-}
+    else{alert("Produto não cadastrado")}
+    
+    }
+
+    function verificarValidade(){
+        let dataAtual=new Date();
+        if ( Estoque!=undefined ){ 
+        if ( Estoque.VerificarValidade(dataAtual)==-1){
+        alert("Produto fora da validade")
+        }
+        else{alert("Produto na validade")}
+        }
+        else{alert("Produto não cadastrado")}
+    }
