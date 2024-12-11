@@ -46,10 +46,14 @@
 				<label>Salario</label>
 				<input type="number"   id="salario" placeholder="Digite o seu salario"></input> <br>
                 <label>Cargo</label>
-                <select id='cargo'   placeholder="Selecione o cargo"  required>
+                <select id='cargo'   placeholder="Selecione o cargo"   required onchange="troca()">
+                    <option></option>
                     <option value='Funcionario' >Funcionario</option>
+                    <option value="Gerente">Gerente</option>
                     <option value='Estagiario' >Estagiario</option>
                 </select> <br>
+                <label id="Ldepartamento" style="display:none">Departamento</label>
+				<input type="text"   id="departamento" placeholder="Digite o departamento" style="display:none"></input> <br>
 				<label>Aumento Salario</label>
 				<input type="number" id="aumento" placeholder="Digite o aumento do seu salario"> <br>
 				<button id="adicionar" onclick="show()">Adicionar</button>
@@ -64,5 +68,3 @@
 
 </body>
 </html>
-
-
