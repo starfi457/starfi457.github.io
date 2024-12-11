@@ -47,16 +47,17 @@
                 <label>Modelo</label>
 				<input type="text" id="modelo" placeholder="Digite o modelo do veiculo">
                 <label>Veiculo</label>
-                <select id='veiculo'   placeholder="Selecione o tipo de veiculo"  required>
+                <select id='veiculo'   placeholder="Selecione o tipo de veiculo"  required onchange="troca()">
+                    <option></option>
                     <option value='Carro' >Carro</option>
                     <option value='Moto' >Moto</option>
                 </select> <br>
 				<label>Ano</label>
 				<input type="number" id="ano" placeholder="Digite o ano de fabricação do veiculo"> <br>
-				<label>Portas</label>
-				<input type="number"   id="portas" placeholder="Digite o numero de portas"></input> <br>
-                <label>Cilindradas</label>
-				<input type="number"   id="cilindradas" placeholder="Digite o numero de cilindradas"></input> <br>
+				<label id="Lporta" style="display:none">Portas</label>
+				<input type="number"   id="portas" placeholder="Digite o numero de portas" style="display:none"></input> <br>
+                <label id="Lcilindrada" style="display:none">Cilindradas</label>
+				<input type="number"   id="cilindradas" placeholder="Digite o numero de cilindradas" style="display:none"></input> <br>
 				<br>
 				<button id="adicionar" onclick="show()">Adicionar</button>
 				<button id="excluir" onclick="clean()">Limpar</button>
@@ -69,5 +70,3 @@
 
 </body>
 </html>
-
-
