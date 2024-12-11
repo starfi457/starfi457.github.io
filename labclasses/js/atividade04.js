@@ -72,3 +72,4 @@ function troca(){
         document.getElementById('cilindradas').style.display="block"
         document.getElementById('Lcilindrada').style.display="block"
     }
+}
