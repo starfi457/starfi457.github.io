@@ -5,7 +5,7 @@
     <title>Laboratório Classes</title>
     <link rel="stylesheet" href="./css/estilo.css">
     <link rel="stylesheet" href="./css/estilo2.css">
-    <script src="./js/atividade05.js" defer></script>
+    <script src="./js/atividade06.js" defer></script>
 </head>
 <body>
     <div class="container">
@@ -40,22 +40,32 @@
                 o	Adicione métodos para listar os livros disponíveis e buscar um livro pelo título.
             </p>
             <fieldset>
-				<legend>Cadastro de Pessoa</legend>
+				<legend>Cadastro de livros</legend>
 				<label>Titulo</label>
-				<input type="text" id="nome" placeholder="Digite o seu nome"> <br>
+				<input type="text" id="nome" placeholder="Digite o titulo"> <br/>
 				<label>Autor</label>
-				<input type="text"   id="autor" placeholder="Digite o autor"></input> <br>
-				<button id="adicionar" onclick="show()">Adicionar</button>
+				<input type="text"   id="autor" placeholder="Digite o autor"></input> <br/>
+                <button id="adicionar" onclick="show()">Adicionar</button>
+                <br/><br/><br/>
+                <label>Pesquisa</label>
+                <input type="text" id="pesquisa" placeholder="Digite o titulo para pesquisar"></input>
+                <button id="pesquisar" onclick="pesquisar()">Pesquisar</button> 
                 <button id="emprestar" onclick="emprestar()">Emprestar</button>
                 <button id="devolver"  onclick="devolver()">Devolver</button>
-                <button id="status"    onclick="status()">Status</button>
+                <br/><br/><br/>				
+                <button id="listar"    onclick="listar()">Listar</button>
+                <button id="disponíveis" onclick="disponiveis()">Disponíveis</button>
+                
 				<button id="excluir" onclick="clean()">Limpar</button>
 			</fieldset>
+            <p>Resultado</p>
+            <div class="display">                
+                <p id="resultado"></p>  
+            </div>
         </div>
         <footer></footer>
     </div>
 
 </body>
 </html>
-
 
