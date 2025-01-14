@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laboratório Classes</title>
+    <link rel="stylesheet" href="./css/estilo.css">
+    <link rel="stylesheet" href="./css/estilo2.css">
+    <script src="./js/atividade04.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        <nav>
+            <h3> Atividades</h3>
+            <ul>
+                <li><a href="atividade01.html">1. Classe Pessoa e Herança</a></li>
+                <li><a href="atividade02.html">2. Classe ContaBancaria</a></li>
+                <li><a href="atividade03.html">3. Sistema de Gerenciamento de Produtos</a></li>
+                <li><a href="atividade04.html">4. Classe Veiculo</a></li>
+                <li><a href="atividade05.html">5. Classe de Gerenciamento de Funcionários</a></li>
+                <li><a href="atividade06.html">6. Sistema de Biblioteca</a></li>
+                <li><a href="atividade07.html">7. Classe Jogador para Jogos Online</a></li>
+                <li><a href="atividade08.html">8. Classe Turma e Alunos</a></li>
+                <li><a href="atividade09.html">9. Classe para Gerenciar Tarefas</a></li>
+                <li><a href="atividade10.html">10. Classe para Controle de Estacionamento</a></li>
+            </ul>
+        </nav>
+        <div class="content">
+            <h1>4. Classe Veiculo</h1>
+            <p>
+                •	Problema: Crie uma classe Veiculo com os atributos:
+                o	marca (string),
+                o	modelo (string),
+                o	ano (número).
+                Adicione métodos:
+                o	descrever(): retorna uma string descrevendo o veículo, como "Marca: Ford, Modelo: Fiesta, Ano: 2020".
+                •	Crie uma classe Carro que herde de Veiculo e adicione:
+                o	portas (número).
+                O método descrever() deve incluir o número de portas.
+                •	Extra: Crie uma subclasse Moto que herde de Veiculo e inclua:
+                o	cilindradas (número).
+                Modifique o método descrever() para incluir esse atributo.
+            </p>
+            <fieldset>
+				<legend>Cadastro de Veiculo</legend>
+				<label>Marca</label>
+				<input type="text" id="marca" placeholder="Digite a marca do veiculo"> <br>
+                <label>Modelo</label>
+				<input type="text" id="modelo" placeholder="Digite o modelo do veiculo">
+                <label>Veiculo</label>
+                <select id='veiculo'   placeholder="Selecione o tipo de veiculo"  required onchange="troca()">
+                    <option></option>
+                    <option value='Carro' >Carro</option>
+                    <option value='Moto' >Moto</option>
+                </select> <br>
+				<label>Ano</label>
+				<input type="number" id="ano" placeholder="Digite o ano de fabricação do veiculo"> <br>
+				<label id="Lporta" style="display:none">Portas</label>
+				<input type="number"   id="portas" placeholder="Digite o numero de portas" style="display:none"></input> <br>
+                <label id="Lcilindrada" style="display:none">Cilindradas</label>
+				<input type="number"   id="cilindradas" placeholder="Digite o numero de cilindradas" style="display:none"></input> <br>
+				<br>
+				<button id="adicionar" onclick="show()">Adicionar</button>
+				<button id="excluir" onclick="clean()">Limpar</button>
+			</fieldset>
+            <p>Resultado</p>
+            <p id="resultado"></p>    
+        </div>
+        <footer></footer>
+    </div>
+
+</body>
+</html>
+
+
