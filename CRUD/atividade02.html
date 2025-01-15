@@ -5,6 +5,7 @@
     <title>Laboratório de CRUD</title>
     <link rel="stylesheet" href="./css/estilo.css">
     <link rel="stylesheet" href="./css/estilo2.css">
+    <script src="./js/atividade02.js" defer></script>
 </head>
 <body>
     <div class="container">
@@ -19,34 +20,21 @@
             </ul>
         </nav>
         <div class="content">
-            <h1>2. Classe ContaBancaria</h1>
+            <h1>2. Cadastrar Livro</h1>
             <p>
-                •	Problema: Crie uma classe ContaBancaria com os seguintes atributos:
-                o	titular (string),
-                o	saldo (número).
-                Adicione os métodos:
-                o	depositar(valor): aumenta o saldo.
-                o	sacar(valor): diminui o saldo se houver saldo suficiente; caso contrário, exiba uma mensagem de erro.
-                o	mostrarSaldo(): exibe o saldo atual.
-                •	Extra:
-                o	Crie uma classe ContaCorrente que herde de ContaBancaria e adicione um atributo limite (número).
-                o	Modifique o método sacar() para permitir saque até o valor do limite.
+                •	Cadastrar um livro na Biblioteca
             </p>
             <fieldset>
-				<legend>Cadastro Conta Bancaria</legend>
-				<label>Titular</label>
-				<input type="text" id="nome" placeholder="Digite o seu nome"> <br>
-				<label>Saldo</label>
-				<input type="number"   id="saldo" placeholder="Digite o seu saldo"></input> <br>
-				<label>Limite</label>
-				<input type="number" id="limite" placeholder="Digite o seu limite"> <br>
-				<label>Valor</label>
-				<input type="number" id="valor" placeholder="Digite o valor">
+				<legend>Biblioteca - Cadastrar Livro</legend>
+				<label>Título</label>
+				<input type="text" id="titulo" placeholder="Digite o título"> <br>
+				<label>Autor</label>
+				<input type="text" id="autor" placeholder="Digite o autor"> <br>
+				<label>Ano de Publicação</label>
+				<input type="number" id="ano" placeholder="Digite o ano"> <br>
 				<br>
 				<button id="Cadastrar" onclick="cadastrar()">Cadastrar</button>
-				<button id="Depositar" onclick="depositar()">Depositar</button>
-				<button id="Sacar" onclick="sacar()">Sacar</button>
-				<button id="excluir" onclick="clean()">Limpar</button>
+				<button id="Limpar" onclick="clean()">Limpar</button>
 			</fieldset>
             <p>Resultado</p>
             <p id="resultado"></p>            
