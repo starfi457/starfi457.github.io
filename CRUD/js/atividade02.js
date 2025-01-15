@@ -1,71 +1,121 @@
-class ContaBancaria {
-    constructor(titular,saldo) {
-      this.titular = titular;
-      this.saldo = saldo;
+class Livro {
+    constructor(val_id,val_titulo,val_autor,val_anoPublicacao,val_disponivel){
+        this.id=val_id
+        this.titulo=val_titulo
+        this.autor=val_autor
+        this.ano=val_anoPublicacao
+        this.disponivel=val_disponivel
     }
-    mostrarSaldo() {
-      const mensagem = "Conta Bancária de "+ this.titular +", possui saldo de R$ "+ this.saldo
-      return mensagem;
+    detalhes(){
+        let mensagem="ID: "+this.id+" Título: "+this.titulo+" Autor: "+this.autor+" Ano de Publicação: "+this.ano+" Status: ";
+        if (this.disponivel){
+           mensagem=mensagem+" disponível"
+        }else{
+           mensagem=mensagem+" indisponível"
+        }
+        return mensagem;   
     }
-    depositar(valor){
-        this.saldo = this.saldo + valor
-        return 0
+    emprestar(){
+        this.disponivel=false
     }
-    sacar(valor){
-        if (this.saldo>=valor){this.saldo = this.saldo - valor}
-        else {return -1}
-        return 0
+    devolver(){
+        this.disponivel=true
+    }  
+    atualizar(val_titulo,val_autor,val_anoPublicacao) {
+        this.titulo=val_titulo
+        this.autor=val_autor
+        this.ano=val_anoPublicacao      
     }
-  }
-  class ContaCorrente extends ContaBancaria {
-    constructor(titular,saldo,limite) {
-      super(titular,saldo);
-      this.limite = limite;
+}
+class Biblioteca {
+    constructor() {
+      this.id=0;
+      this.livros=[];
     }
-    sacar(valor){
-        let val_conta = this.saldo+this.limite;
-        if (val_conta>=valor){this.saldo = this.saldo - valor}
-        else {return -1}
-        return 0        
+    proxid(){
+      this.id++;
+      return this.id;
     }
-} 
+    setid(chave){
+    this.id=chave;
+    }
+    setlivros(colecao){
+        this.livros=[];
+        for (const item of colecao){
+            let exemplar=new Livro(item.id,item.titulo,item.autor,item.ano,item.disponivel)
+            this.livros.push(exemplar)
+        }
+    }
+    adicionarLivro(exemplar){
+        this.livros.push(exemplar)
+        this.salvarDados()
+    }
+   listarLivros(){
+      return this.livros
+   }
+   atualizarLivro(id, novosDados){
+    const i = this.livros.map(e => e.id).indexOf(pesquisa);
+    if(i != -1){
+        this.livros[i].atualizar(novosDados.titulo,novosDados.autor,novosDados.ano)
+        this.salvarDados()
+        return 0;
+        }
+        else{
+        return -1;        
+        }   
+   }
+   removerLivro(pesquisa){
+        const i = this.livros.map(e => e.id).indexOf(pesquisa);
+        if(i != -1){
+        this.livros.splice(i,1);
+        this.salvarDados()
+        return 0;
+        }
+        else{
+        return -1;        
+        }
+        
+   }
+   salvarDados(){
+    let jlivros = JSON.stringify(this)
+    localStorage.setItem("Livraria",jlivros)
+   }
 
-var Conta
+  }
+var Livraria
+if(localStorage.getItem("Livraria")===null){
+    Livraria=undefined
+}else{
+    Livraria=new Biblioteca
+    jlivros=JSON.parse(localStorage.getItem("Livraria"))
+    Livraria.setid(jlivros.id)
+    Livraria.setlivros(jlivros.livros)
+}
 
 function clean() {
-    document.querySelector("#nome").value = ""
-    document.querySelector("#saldo").value = ""
-    document.querySelector("#limite").value = ""
-    document.querySelector("#valor").value = ""
+    document.querySelector("#titulo").value = ""
+    document.querySelector("#autor").value = ""
+    document.querySelector("#ano").value = ""
     document.querySelector("#resultado").innerHTML=""
 }
 function cadastrar() {
-    let val_nome=document.querySelector("#nome").value
-    let val_saldo=parseFloat (document.querySelector("#saldo").value)
-    let val_limite=parseFloat(document.querySelector("#limite").value)
-    const Ze = new ContaCorrente(val_nome,val_saldo,val_limite)
-    Conta = Ze
+    let val_titulo=document.querySelector("#titulo").value
+    let val_autor=document.querySelector("#autor").value
+    let val_ano=parseInt (document.querySelector("#ano").value)
     const resultado = document.querySelector("#resultado")
-    resultado.innerHTML=Ze.mostrarSaldo()
-}
-function depositar(){
-    let val_valor=parseFloat(document.querySelector("#valor").value)
-     if (Conta !=undefined ){
-        Conta.depositar(val_valor)
-        const resultado = document.querySelector("#resultado")
-        resultado.innerHTML= Conta.mostrarSaldo()
+    if(Livraria==undefined){
+        alert("Biblioteca inexistente!!!")
+    }else{
+     let chave=Livraria.proxid()
+     let exemplar=new Livro(chave,val_titulo,val_autor,val_ano,true)
+     Livraria.adicionarLivro(exemplar)
+     let mensagem=""
+     for (const item of Livraria.listarLivros()){
+        mensagem += item.detalhes() + "<br>";
+     }
+     resultado.innerHTML=mensagem
     }
-    else{alert("Titular não cadastrado")}
-    
+  
 }
-function sacar(){
-    let val_valor=parseFloat(document.querySelector("#valor").value)
-    if (Conta != undefined){
-         let teste= Conta.sacar(val_valor)
-         if(teste==-1){alert("Saldo insuficiente")}
-        const resultado = document.querySelector("#resultado")
-        resultado.innerHTML= Conta.mostrarSaldo()
-    }
-    else{alert("Titular não cadastrado")}  
 }
 
