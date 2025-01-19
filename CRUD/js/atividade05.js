@@ -1,97 +1,183 @@
-class Funcionario {
-    constructor(nome,salario) {
-      this.nome=nome;
-      this.salario=salario;
+class Livro {
+    constructor(val_id,val_titulo,val_autor,val_anoPublicacao,val_disponivel){
+        this.id=val_id
+        this.titulo=val_titulo
+        this.autor=val_autor
+        this.ano=val_anoPublicacao
+        this.disponivel=val_disponivel
     }
-    descrever() {
-      const mensagem = "Nome: "+ this.nome +", Salario: "+ this.salario 
-      return mensagem;
+    detalhes(){
+        let mensagem="ID: "+this.id+" Título: "+this.titulo+" Autor: "+this.autor+" Ano de Publicação: "+this.ano+" Status: ";
+        if (this.disponivel){
+           mensagem=mensagem+" disponível"
+        }else{
+           mensagem=mensagem+" indisponível"
+        }
+        return mensagem;   
     }
-    aumentarSalario(aumento){
-   this.salario=this.salario+this.salario*(aumento/100);
+    emprestar(){
+        this.disponivel=false
     }
-  }
-  class Gerente extends Funcionario {
-    constructor(nome,salario,departamento) {
-      super(nome,salario);
-      this.departamento = departamento;
-      
+    devolver(){
+        this.disponivel=true
+    }  
+    atualizar(val_titulo,val_autor,val_anoPublicacao) {
+        this.titulo=val_titulo
+        this.autor=val_autor
+        this.ano=val_anoPublicacao      
     }
-    show(){
-        const mensagem = "Nome: "+ this.nome +", Salario: "+ this.salario + " Departamento: "+this.departamento
-      return mensagem;
+}
+class Biblioteca {
+    constructor() {
+      this.id=0;
+      this.livros=[];
     }
-
-    
-} 
-class Estagiario  extends Funcionario{
-    constructor(nome,salario) {
-        super(nome,salario);
-      }
-      show(){
-        const mensagem = "Nome: "+ this.nome +", Salario: "+ this.salario 
-        return mensagem;
-      }
-      aumentarSalario(aumento){
-        if(aumento>10){
-        this.salario=this.salario*1.1;
+    proxid(){
+      this.id++;
+      return this.id;
+    }
+    setid(chave){
+    this.id=chave;
+    }
+    setlivros(colecao){
+        this.livros=[];
+        for (const item of colecao){
+            const ze =new Livro(item.id,item.titulo,item.autor,item.ano,item.disponivel)
+            this.livros.push(ze)
+        }
+    this.livros=colecao;
+    }
+    adicionarLivro(exemplar){
+        this.livros.push(exemplar)
+        this.salvarDados()
+    }
+   listarLivros(){
+      return this.livros
+   }
+   pesquisarLivros(busca){
+    let filtro=true
+    let resultado=[]
+    for (const item of this.livros){
+        if(busca.titulo !=""){
+            filtro= filtro && (busca.titulo==item.titulo)
+        }
+        if(busca.autor !=""){
+            filtro= filtro && (busca.autor==item.autor)
+        }
+        if(busca.ano !=""){
+            filtro= filtro && (busca.ano==item.ano)
+        }
+        if(busca.id !=""){
+            filtro= filtro && (busca.id==item.id)
+        }
+        if(filtro){
+            resultado.push(item)
+        }else {filtro=true}
+    }
+    return resultado
+   }
+   atualizarLivro(val_id, novosDados){
+    const i = this.livros.map(e => e.id).indexOf(val_id);
+    if(i != -1){
+        this.livros[i]=novosDados
+        this.salvarDados()
+        return 0;
         }
         else{
-            this.salario=this.salario+this.salario*(aumento/100);
+        return -1;        
+        }   
+   }
+   removerLivro(val_id){
+        const i = this.livros.map(e => e.id).indexOf(val_id);
+        if(i != -1){
+        this.livros.splice(i,1);
+        this.salvarDados()
+        return 0;
         }
+        else{
+        return -1;        
         }
+        
+   }
+   salvarDados(){
+    let jlivros = JSON.stringify(this)
+    localStorage.setItem("Livraria",jlivros)
+   }
+
+  }
+var Livraria
+var livrinho
+
+if(localStorage.getItem("Livraria")===null){
+    Livraria=undefined
+}else{
+    Livraria=new Biblioteca
+    jlivros=JSON.parse(localStorage.getItem("Livraria"))
+    Livraria.setid(jlivros.id)
+    Livraria.setlivros(jlivros.livros)
 }
-var pelego
+
 
 function clean() {
-    document.querySelector("#nome").value = ""
-    document.querySelector("#salario").value = ""
-    document.querySelector("#cargo").value = ""
-    document.querySelector("#departamento").value=""
-    document.querySelector("#aumento").value=""
+    document.querySelector("#chave").value = ""
+    document.querySelector("#titulo").value = ""
+    document.querySelector("#autor").value = ""
+    document.querySelector("#ano").value = ""
     document.querySelector("#resultado").innerHTML=""
 }
-function show() {
-    let val_nome=document.querySelector("#nome").value
-    let val_salario=parseFloat(document.querySelector("#salario").value)
-    let val_cargo=document.querySelector("#cargo").value
-    let Ze
-    if(document.querySelector("#cargo").value=="Gerente"){
-    let val_departamento=document.querySelector("#departamento").value
-    Ze = new Gerente(val_nome,val_salario,val_departamento)
-    const resultado = document.querySelector("#resultado")
-    resultado.innerHTML=Ze.descrever()+"<br>"+Ze.show()}
-    if(document.querySelector("#cargo").value=="Funcionario") 
-    { Ze = new Funcionario(val_nome,val_salario,val_cargo,)
-        const resultado = document.querySelector("#resultado")
-        resultado.innerHTML=Ze.descrever()+"<br>"}
-        if(document.querySelector("#cargo").value=="Estagiario") 
-            { Ze = new Estagiario(val_nome,val_salario,val_cargo,)
-                const resultado = document.querySelector("#resultado")
-                resultado.innerHTML=Ze.descrever()+"<br>"} 
-        pelego=Ze
-    }
-    
-function troca(){
-    if(document.querySelector("#cargo").value=="Gerente"){
-        document.getElementById('departamento').style.display="block"
-        document.getElementById('Ldepartamento').style.display="block"
+
+function pesquisar() {
+    if (Livraria!=undefined ){
+    let mensagem=""
+    let val_id=document.querySelector("#chave").value
+    let resultado= document.querySelector("#resultado")
+    mensagem=val_id 
+    if(mensagem==""){
+      alert("Informe o Id para a  busca!!!")
+    } else
+    {
+        let busca= new Livro(val_id,"","","",true)
+        let ze
+        const lista = Livraria.pesquisarLivros(busca)
+        mensagem="Foram encontrados: "+ lista.length+ " livro(s)<br/>"
+        for (const exemplar of lista){
+            ze=new Livro(exemplar.id,exemplar.titulo,exemplar.autor,exemplar.ano,exemplar.disponivel)
+            mensagem+=ze.detalhes()+"<br/>"
+        }
+        resultado.innerHTML=mensagem
+        if (lista.length==1){ 
+        livrinho=ze
+        document.querySelector("#titulo").value=ze.titulo
+        document.querySelector("#autor").value=ze.autor
+        document.querySelector("#ano").value=ze.ano
+
+        }
+        else{livrinho=undefined}
+    }  
     }
     else{
-        document.getElementById('departamento').style.display="none"
-        document.getElementById('Ldepartamento').style.display="none"
+       alert("Biblioteca inexistente!!!")
     }
+
 }
 
-function aumentarSalario(){ 
-    let val_valor=parseFloat(document.querySelector("#aumento").value)
-    if (pelego !=undefined ){
-       pelego.aumentarSalario(val_valor)
-       const resultado = document.querySelector("#resultado")
-       resultado.innerHTML=pelego.descrever() }
-   else{alert("Funcionario não cadastrado")}
-   
 
-
-
+function remover() {
+    if (Livraria!=undefined ){
+        if(livrinho!=undefined){            
+            Livraria.removerLivro(livrinho.id)
+            livrinho=undefined
+            let resultado= document.querySelector("#resultado")
+            let mensagem=""
+            let ze
+            for (const exemplar of Livraria.listarLivros()){
+                ze=new Livro(exemplar.id,exemplar.titulo,exemplar.autor,exemplar.ano,exemplar.disponivel)
+               mensagem += ze.detalhes() + "<br>";
+            }
+            resultado.innerHTML=mensagem
+        }
+    }
+    else{
+       alert("Biblioteca inexistente!!!")
+    }
 }
