@@ -1,94 +1,188 @@
-class Produto {
-    constructor(nome,preco,quantidadeEmEstoque) {
-      this.nome = nome;
-      this.preco = preco;
-      this.quantidadeEmEstoque=quantidadeEmEstoque;
+class Livro {
+    constructor(val_id,val_titulo,val_autor,val_anoPublicacao,val_disponivel){
+        this.id=val_id
+        this.titulo=val_titulo
+        this.autor=val_autor
+        this.ano=val_anoPublicacao
+        this.disponivel=val_disponivel
     }
-    mostrarProduto() {
-      const mensagem = "Produto "+ this.nome +", possui o valor de R$ "+ this.preco +  " , cujo a quantidade em estoque é  "+this.quantidadeEmEstoque
-      return mensagem;
-    }
-    atualizarEstoque(valor){
-        if(valor<0){
-        if( this.quantidadeEmEstoque + valor<0){
-          return -1
-        }}
-        this.quantidadeEmEstoque = this.quantidadeEmEstoque + valor
-        return 0
-    }
-   
-    
-    calcularValorEstoque(){
-        return this.quantidadeEmEstoque * this.preco
-    }
-  }
- 
-
-  class ProdutoPerecivel extends Produto {
-    constructor(nome,preco,quantidadeEmEstoque,dataDeValidade) {
-      super(nome,preco,quantidadeEmEstoque);
-      this.dataDeValidade = dataDeValidade;
-    }
-    
-   VerificarValidade(dataTeste){
-        if (dataTeste>this.dataDeValidade){
-            return -1
+    detalhes(){
+        let mensagem="ID: "+this.id+" Título: "+this.titulo+" Autor: "+this.autor+" Ano de Publicação: "+this.ano+" Status: ";
+        if (this.disponivel){
+           mensagem=mensagem+" disponível"
+        }else{
+           mensagem=mensagem+" indisponível"
         }
-        else {return 0}
-              
+        return mensagem;   
     }
-} 
+    emprestar(){
+        this.disponivel=false
+    }
+    devolver(){
+        this.disponivel=true
+    }  
+    atualizar(val_titulo,val_autor,val_anoPublicacao) {
+        this.titulo=val_titulo
+        this.autor=val_autor
+        this.ano=val_anoPublicacao      
+    }
+}
+class Biblioteca {
+    constructor() {
+      this.id=0;
+      this.livros=[];
+    }
+    proxid(){
+      this.id++;
+      return this.id;
+    }
+    setid(chave){
+    this.id=chave;
+    }
+    setlivros(colecao){
+        this.livros=[];
+        for (const item of colecao){
+            const ze =new Livro(item.id,item.titulo,item.autor,item.ano,item.disponivel)
+            this.livros.push(ze)
+        }
+    this.livros=colecao;
+    }
+    adicionarLivro(exemplar){
+        this.livros.push(exemplar)
+        this.salvarDados()
+    }
+   listarLivros(){
+      return this.livros
+   }
+   pesquisarLivros(busca){
+    let filtro=true
+    let resultado=[]
+    for (const item of this.livros){
+        if(busca.titulo !=""){
+            filtro= filtro && (busca.titulo==item.titulo)
+        }
+        if(busca.autor !=""){
+            filtro= filtro && (busca.autor==item.autor)
+        }
+        if(busca.ano !=""){
+            filtro= filtro && (busca.ano==item.ano)
+        }
+        if(busca.id !=""){
+            filtro= filtro && (busca.id==item.id)
+        }
+        if(filtro){
+            resultado.push(item)
+        }else {filtro=true}
+    }
+    return resultado
+   }
+   atualizarLivro(val_id, novosDados){
+    const i = this.livros.map(e => e.id).indexOf(val_id);
+    if(i != -1){
+        this.livros[i]=novosDados
+        this.salvarDados()
+        return 0;
+        }
+        else{
+        return -1;        
+        }   
+   }
+   removerLivro(val_id){
+        const i = this.livros.map(e => e.id).indexOf(val_id);
+        if(i != -1){
+        this.livros.splice(i,1);
+        this.salvarDados()
+        return 0;
+        }
+        else{
+        return -1;        
+        }
+        
+   }
+   salvarDados(){
+    let jlivros = JSON.stringify(this)
+    localStorage.setItem("Livraria",jlivros)
+   }
 
-var Estoque
+  }
+var Livraria
+var livrinho
+
+if(localStorage.getItem("Livraria")===null){
+    Livraria=undefined
+}else{
+    Livraria=new Biblioteca
+    jlivros=JSON.parse(localStorage.getItem("Livraria"))
+    Livraria.setid(jlivros.id)
+    Livraria.setlivros(jlivros.livros)
+}
+
 
 function clean() {
-    document.querySelector("#nome").value = ""
-    document.querySelector("#preco").value = ""
-    document.querySelector("#quantidadeEmEstoque").value = ""
-    document.querySelector("#dataDeValidade").value = ""
+    document.querySelector("#chave").value = ""
+    document.querySelector("#titulo").value = ""
+    document.querySelector("#autor").value = ""
+    document.querySelector("#ano").value = ""
     document.querySelector("#resultado").innerHTML=""
 }
-function cadastrar() {
-    let val_nome=document.querySelector("#nome").value
-    let val_preco=parseFloat (document.querySelector("#preco").value)
-    let val_quantidade=parseFloat(document.querySelector("#quantidadeEmEstoque").value)
-    let val_auxData=(document.querySelector("#dataDeValidade").value).split('-')
-    var val_datadevalidade = new Date(val_auxData[0], val_auxData[1] - 1, val_auxData[2]);
-    const Ze = new ProdutoPerecivel(val_nome,val_preco,val_quantidade,val_datadevalidade)
-    Estoque = Ze
-    const resultado = document.querySelector("#resultado")
-    resultado.innerHTML=Ze.mostrarProduto()
+
+function pesquisar() {
+    if (Livraria!=undefined ){
+    let mensagem=""
+    let val_titulo=document.querySelector("#titulo").value
+    let val_autor=document.querySelector("#autor").value
+    let val_id=document.querySelector("#chave").value
+    let val_anoPublicacao=document.querySelector("#ano").value
+    let resultado= document.querySelector("#resultado")
+    mensagem=val_id + val_titulo + val_autor + val_anoPublicacao
+    if(mensagem==""){
+      alert("Informe pelo menos 1 parâmetro de busca!!!")
+    } else
+    {
+        let busca= new Livro(val_id,val_titulo,val_autor,val_anoPublicacao,true)
+        let ze
+        const lista = Livraria.pesquisarLivros(busca)
+        mensagem="Foram encontrados: "+ lista.length+ " livro(s)<br/>"
+        for (const exemplar of lista){
+            ze=new Livro(exemplar.id,exemplar.titulo,exemplar.autor,exemplar.ano,exemplar.disponivel)
+            mensagem+=ze.detalhes()+"<br/>"
+        }
+        resultado.innerHTML=mensagem
+        if (lista.length==1){ livrinho=ze}
+        else{livrinho=undefined}
+    }  
+    }
+    else{
+       alert("Biblioteca inexistente!!!")
+    }
+
 }
 
-function atualizarEstoque(){
-    let val_valor=parseFloat(document.querySelector("#atualizaçãoDoestoque").value)
-     if ( Estoque!=undefined ){
-        if(Estoque.atualizarEstoque(val_valor)==-1){
-            alert("Estoque Insuficiente")
+function emprestar() {
+    if (Livraria!=undefined ){
+        if(livrinho!=undefined){
+            livrinho.emprestar()
+            Livraria.atualizarLivro(livrinho.id,livrinho)
+            let resultado= document.querySelector("#resultado")
+            resultado.innerHTML=livrinho.detalhes()
         }
-        const resultado = document.querySelector("#resultado")
-        resultado.innerHTML= Estoque.mostrarProduto()
+
     }
-    else{alert("Produto não cadastrado")}
-    
+    else{
+       alert("Biblioteca inexistente!!!")
+    }
 }
 
-    function calcularValorEstoque(){
-        if ( Estoque!=undefined ){ const resultado = document.querySelector("#resultado")
-        resultado.innerHTML= Estoque.mostrarProduto() + "<br/> O valor total do estoque é R$ "+Estoque.calcularValorEstoque()
-    }
-    else{alert("Produto não cadastrado")}
-    
-    }
-
-    function verificarValidade(){
-        let dataAtual=new Date();
-        if ( Estoque!=undefined ){ 
-        if ( Estoque.VerificarValidade(dataAtual)==-1){
-        alert("Produto fora da validade")
+function devolver() {
+    if (Livraria!=undefined ){
+        if(livrinho!=undefined){
+            livrinho.devolver()
+            Livraria.atualizarLivro(livrinho.id,livrinho)
+            let resultado= document.querySelector("#resultado")
+            resultado.innerHTML=livrinho.detalhes()
         }
-        else{alert("Produto na validade")}
-        }
-        else{alert("Produto não cadastrado")}
     }
-
+    else{
+       alert("Biblioteca inexistente!!!")
+    }
+}
