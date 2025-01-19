@@ -21,10 +21,11 @@ class Livro {
     devolver(){
         this.disponivel=true
     }  
-    atualizar(val_titulo,val_autor,val_anoPublicacao) {
+    atualizar(val_titulo,val_autor,val_anoPublicacao,val_disponivel) {
         this.titulo=val_titulo
         this.autor=val_autor
-        this.ano=val_anoPublicacao      
+        this.ano=val_anoPublicacao   
+        this.disponivel=val_disponivel   
     }
 }
 class Biblioteca {
@@ -102,6 +103,18 @@ function cadastrar() {
     let val_titulo=document.querySelector("#titulo").value
     let val_autor=document.querySelector("#autor").value
     let val_ano=parseInt (document.querySelector("#ano").value)
+    if(val_titulo==""){
+        alert("Informe o título!!!")
+        return
+    }
+    if(val_autor==""){
+        alert("Informe o autor!!!")
+        return
+    }
+    if(document.querySelector("#ano").value==""){
+        alert("Informe o ano!!!")
+        return
+    }
     const resultado = document.querySelector("#resultado")
     if(Livraria==undefined){
         alert("Biblioteca inexistente!!!")
@@ -117,5 +130,5 @@ function cadastrar() {
     }
   
 }
-}
+
 
