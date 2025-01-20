@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="script4.js" defer></script>
+    <title>Sistema de Biblioteca com Empréstimos  </title>
+    <style>
+      table, td, th {
+        border: 1px solid;
+      }
+      
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      </style>
+  </head>
+<body>
+<h2>Escalfoni Biblio</h2>
+<fieldset>
+  <legend>Biblioteca</legend>
+  <label>Total de Livros: </label><label id="Total"></label><label> Total de emprestimos: </label><label id="Total-Emprestados"></label><br/><br/>
+  <button id="criar" onclick="criar()">Criar Biblioteca</button>
+  <button id="lista_todos" onclick="todos()">Listar todos os exemplares</button>
+  <button id="disponiveis" onclick="disponiveis()">Listar todos os exemplares disponiveis</button>
+  <button id="emprestados" onclick="emprestados()">Listar títulos dos exemplares emprestados</button>
+</fieldset>
+<br/>
+<fieldset>
+  <legend>Cadastrar Livro</legend>
+  <label>Título</label>
+  <input type="text" id="titulo" placeholder="Digite o título"> <br>
+  <label>Autor</label>
+  <input type="text" id="autor" placeholder="Digite o autor"> <br>
+  <button id="Cadastrar" onclick="cadastrar()">Cadastrar</button>
+  <button id="Limpar" onclick="clean()">Limpar</button>
+</fieldset>
+<br/>
+<fieldset>
+  <legend>Gerenciar Livro</legend>
+  <label>ID</label>
+  <input type="number" id="chave" placeholder="Digite o ID"> <br>                
+  <label>Título</label>
+  <input type="text" id="titulo" placeholder="Digite o título"> <br>
+  <br>
+  <button id="Pesquisar" onclick="pesquisar()">Pesquisar</button>
+  <button id="emprestar" onclick="emprestar()">Emprestar</button>
+  <button id="devolver" onclick="devolver()">Devolver</button>              
+  <button id="Limpar" onclick="clean2()">Limpar</button>
+</fieldset>
+<br/>
+<h2>Resultado:</h2>
+<br/>
+<div id="resultado" style="overflow:auto; height: 500px;"></div>
+        
+</body>
+</html>
