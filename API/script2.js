@@ -49,7 +49,9 @@ btnPesquisar.addEventListener('click',async()=>{
      let mensagem ="<table><tr><th>Título</th><th>Ano</th><th>Diretor</th><th>Poster</th></tr>"
      for (const item of filtrado){
         let linha="<tr><td>"+item.titulo+"</td><td>"+item.ano+"</td><td>"+item.diretor+"</td><td>"
-        linha+="<img src='"+item.imagem+"' width='100' height='150'></td></tr>"
+        if (item.imagem!="N/A"){
+        linha+="<img src='"+item.imagem+"' width='100' height='150'></td></tr>"}
+        else {linha+="<h2>SEM IMAGEM</h2></td></tr>"}
         mensagem+=linha
      }
      mensagem+="</table>"
@@ -57,4 +59,3 @@ btnPesquisar.addEventListener('click',async()=>{
     }
 
 })
- 
