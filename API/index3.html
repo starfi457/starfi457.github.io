@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="script3.js" defer></script>
+    <title>Pesquisa de Clima com Funções Assíncronas  </title>
+    <style>
+      table, td, th {
+        border: 1px solid;
+        vertical-align: middle;
+      }
+      
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      </style>
+  </head>
+<body>
+<h2>Escalfoni Clima</h2>
+<select name="cidades" id="cidades">
+  <option value=""></option>
+  <option value="Nova Friburgo">Nova Friburgo</option>
+  <option value="Bom Jardim">Bom Jardim</option>
+  <option value="Cordeiro">Cordeiro</option>
+  <option value="Cantagalo">Cantagalo</option>
+  <option value="Cachoeiras de Macacu">Cachoeiras de Macacu</option>
+  <option value="Brasilia">Brasília</option>
+  <option value="Berlim">Berlim</option>
+  <option value="Lisboa">Lisboa</option>
+  <option value="Londres">Londres</option>
+  <option value="Moscou">Moscou</option>
+  <option value="Paris">Paris</option>
+  <option value="Roma">Roma</option>
+  <option value="Viena">Viena</option>
+</select>
+<button id="pesquisar" onclick="pesquisar()" >Pesquisar Previsão</button>
+<br/>
+<h2>Resultado:</h2>
+<br/>
+<div id="resultado" style="overflow:auto; height: 600px;"></div>
+        
+</body>
+</html>
